@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+
+        <!-- Appender para archivo alumno.log -->
+        <RollingFile name="AlumnoLog"
+                     fileName="logs/alumno.log"
+                     filePattern="logs/alumno-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} --- [%t] %msg%n"/>
+            <Policies>
+                <!-- Rotación diaria -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- Rotación por tamaño (10MB) -->
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <!-- Logger específico para paquete alumno -->
+        <Logger name="com.fisiunmsm.ayudadoc.alumno" level="INFO" additivity="false">
+            <AppenderRef ref="AlumnoLog"/>
+        </Logger>
+
+        <!-- Logger raíz (Spring Boot, Netty, etc.) -->
+        <Root level="INFO">
+            <AppenderRef ref="AlumnoLog"/>
+        </Root>
+
+    </Loggers>
+</Configuration>
