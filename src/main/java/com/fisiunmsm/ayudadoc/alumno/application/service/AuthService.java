@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.fisiunmsm.ayudadoc.alumno.domain.model.Usuario;
 import com.fisiunmsm.ayudadoc.alumno.infraestructure.mapper.UsuarioTable;
+import com.fisiunmsm.ayudadoc.alumno.infraestructure.repository.AlumnoRepository;
 import com.fisiunmsm.ayudadoc.alumno.infraestructure.repository.UsuarioRepository;
 import com.fisiunmsm.ayudadoc.shared.helper.AyudocLog;
 
@@ -14,22 +15,28 @@ import reactor.core.publisher.Mono;
 public class AuthService {
     
     @Autowired
-    private UsuarioRepository usuarioRepository;
+private UsuarioRepository usuarioRepository;
 
-    public Mono<Usuario> autenticarUsuario(String username, String password) {
-    AyudocLog.getInstance().debug("Intentando autenticar al usuario: " + username);
+@Autowired
+private AlumnoRepository alumnoRepository;
+
+public Mono<Usuario> autenticarUsuario(String username, String password) {
+    AyudocLog.getInstance().debug("Autenticando usuario: " + username);
 
     return usuarioRepository.findByUsernameAndPassword(username, password)
         .map(UsuarioTable::toDomainModel)
+        .flatMap(usuario ->
+            alumnoRepository.findByEmail(username)
+                .map(alumno -> {
+                    usuario.setCodigoAlumno(alumno.getCodigo()); // Aquí seteas el código
+                    return usuario;
+                })
+                .switchIfEmpty(Mono.just(usuario)) // Si no hay alumno, igual retorna el usuario
+        )
         .doOnSuccess(user -> {
             if (user != null) {
-                AyudocLog.getInstance().info("Usuario autenticado exitosamente: " + user.getNombreVisualizar());
-            } else {
-                AyudocLog.getInstance().warn("Credenciales incorrectas para el usuario: " + username);
+                AyudocLog.getInstance().debug("Usuario autenticado: " + user.getNombreVisualizar());
             }
-        })
-        .doOnError(error -> {
-            AyudocLog.getInstance().error("Error durante la autenticación: " + error.getMessage());
         });
 }
 

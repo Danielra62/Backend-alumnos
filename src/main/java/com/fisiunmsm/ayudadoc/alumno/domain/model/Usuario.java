@@ -9,6 +9,8 @@ public class Usuario {
     private String fechaCreacion;
     private String fechaValidado;
     private String fechaUltLogin;
+    private String codigoAlumno;
+
 
     // Constructor por defecto (requerido por Spring)
     public Usuario() {
@@ -101,6 +103,13 @@ public class Usuario {
     public void setFechaUltLogin(String fechaUltLogin) {
         this.fechaUltLogin = fechaUltLogin;
     }
+
+    public String getCodigoAlumno() {
+    return codigoAlumno;
+}
+    public void setCodigoAlumno(String codigoAlumno) {
+    this.codigoAlumno = codigoAlumno;
+}
 
     // Método toString() para logging/debug
     @Override

@@ -17,7 +17,8 @@ public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http)
             .pathMatchers(
                 "/api-alumno/v1/auth/login",  // Permitir login sin autenticación
                 "/api-cur/v1/cursos",
-                "/api-alumno/v1/auth/registro"         // Permitir acceso público a listado de cursos
+                "/api-alumno/v1/auth/registro",         // Permitir acceso público a listado de cursos
+                "/api-alumno/v1/notas/**"
             ).permitAll()
             .anyExchange().authenticated()   // Todo lo demás requiere autenticación
         .and()
