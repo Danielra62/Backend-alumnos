@@ -24,6 +24,10 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
 
+      - name: Instalar JAR manualmente en el repositorio Maven local del runner
+        run: mvn install:install-file -Dfile="shared_ayuda_docente-1.0-SNAPSHOT.jar" -DgroupId="com.fisiunmsm.ayudadoc.shared" -DartifactId="shared_ayuda_docente" -Dversion="1.0-SNAPSHOT" -Dpackaging=jar
+                                      
+
       - name: Build with Maven
         run: mvn clean install
 
