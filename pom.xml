@@ -91,9 +91,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.fisiunmsm.ayudadoc</groupId>
+            <groupId>com.fisiunmsm.ayudadoc.shared</groupId>
             <artifactId>shared_ayuda_docente</artifactId>
             <version>1.0-SNAPSHOT</version>
+
         </dependency>
 
         <dependency>
