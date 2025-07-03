@@ -10,20 +10,15 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class WebFluxSecurityConfig {
   
-@Bean
-public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-    return http.csrf().disable()
-        .authorizeExchange()
-            .pathMatchers(
-                "/api-alumno/v1/auth/login",  // Permitir login sin autenticación
-                "/api-cur/v1/cursos",
-                "/api-alumno/v1/auth/registro",         // Permitir acceso público a listado de cursos
-                "/api-alumno/v1/notas/**"
-            ).permitAll()
-            .anyExchange().authenticated()   // Todo lo demás requiere autenticación
-        .and()
-        .httpBasic()
-        .and()
-        .build();
-}
+  @Bean
+  public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    //return http.csrf().disable().build();
+    //http.oauth2Client();
+    //return http.authorizeExchange().anyExchange().permitAll().and().build();
+    //return http.httpBasic().and().build();
+    //return http.csrf().disable().authorizeExchange().anyExchange().authenticated().and().httpBasic().and().build();
+    
+    return http.csrf().disable().httpBasic().and().build();   // no valida clave de Autenticacion Basica, pero si deja pasar CORS
+    //return http.csrf().disable().authorizeExchange().anyExchange().authenticated().and().httpBasic().and().build();   // no valida clave de Autenticacion Basica, pero si deja pasar CORS
+  }
 }

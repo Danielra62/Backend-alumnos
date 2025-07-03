@@ -1,0 +1,9 @@
+spring:
+  r2dbc:
+    username: ayudadoc
+    password: ayudadoc.1
+    url: >
+      r2dbc:gcp:mysql:///ayudoc
+      ?cloudSqlInstance=ayudadocbd
+      &socketFactory=com.google.cloud.sql.mysql.SocketFactory
+      &useSSL=false

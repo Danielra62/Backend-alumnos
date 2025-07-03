@@ -16,4 +16,7 @@ public interface CursoRepository extends R2dbcRepository<CursoTable, Long>  {
     @Query(value = "SELECT * FROM curso WHERE estado = '1' order by nombre")
     Flux<CursoTable> queryCursosActivos();
 
+    @Query(value = "SELECT * FROM curso WHERE estado = '1' AND periodoacademicoid = :periodo order by nombre")
+    Flux<CursoTable> queryCursosActivosPeriodo(Long periodo);
+
 }

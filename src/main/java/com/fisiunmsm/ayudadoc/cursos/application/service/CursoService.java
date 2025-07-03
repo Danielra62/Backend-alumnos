@@ -102,4 +102,9 @@ public class CursoService {
             
     }
 
+    public Flux<Curso> obtenerCursosActivosPeriodo( Long periodo ) {
+        return cursoRepository.queryCursosActivosPeriodo( periodo ).flatMap(CursoTable::toMono);
+    }
+
+
 }

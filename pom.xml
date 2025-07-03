@@ -18,7 +18,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.fisiunmsm.ayudadoc.cursos.Main</mainClass>
+                    <mainClass>com.fisiunmsm.ayudadoc.Main</mainClass>
                 </configuration>
                 <executions>
                     <execution>

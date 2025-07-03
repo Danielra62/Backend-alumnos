@@ -34,8 +34,6 @@ public class ApiErrorHandler {
             path
         );
         break;
-
-
       default:
         response.setType("/v1/errors/api");
         response.setTitle(error.getMessage());

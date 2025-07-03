@@ -44,5 +44,12 @@ public class CursoController {
     public Flux<Curso> getCursosActivos() {
 
         return cursoService.obtenerCursosActivos();
-    }    
+    }
+
+    @GetMapping("/cursosPeriodo/{periodo}")
+    public Flux<Curso> getCursosActivosPeriodo(@PathVariable Long periodo) {
+
+        return cursoService.obtenerCursosActivosPeriodo( periodo );
+    }
+   
 }
