@@ -1,4 +1,4 @@
-package com.fisiunmsm.ayudadoc.alumno.application.error;
+package com.fisiunmsm.ayudadoc.alumno.presentation.config.error;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
