@@ -9,7 +9,7 @@
         <version>3.3.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.fisiunmsm.ayudadoc.cursos</groupId>
+    <groupId>com.fisiunmsm.ayudadoc</groupId>
     <artifactId>cursos_ayuda_docente</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
