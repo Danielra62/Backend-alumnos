@@ -21,6 +21,8 @@ public class WebFluxSecurity {
                         // Endpoints que requieren autenticación
                         .pathMatchers("/api-alumno/v1/notas/**").authenticated()
                         // Otros endpoints
+                        .pathMatchers("/api-alumno/v1/registro-curso").permitAll()
+
                         .anyExchange().authenticated()
                 )
                 .httpBasic()

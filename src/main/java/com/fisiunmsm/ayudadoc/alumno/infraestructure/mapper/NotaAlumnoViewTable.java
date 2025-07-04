@@ -1,7 +1,6 @@
 package com.fisiunmsm.ayudadoc.alumno.infraestructure.mapper;
 
 import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
 import com.fisiunmsm.ayudadoc.alumno.domain.model.NotaAlumnoView;
